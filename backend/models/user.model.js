@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema(
     referrals: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     referredBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     referralCode: { type: String, unique: true },
-    image: { type: String, default: null },
+    image: { type: String, default: "null" },
     resetPasswordToken: String,
     resetPasswordExpire: Date,
   },

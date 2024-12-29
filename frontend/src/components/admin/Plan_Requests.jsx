@@ -40,7 +40,7 @@ useEffect(() => {
       } else {
         setError(data.message || 'Failed to fetch data');
       }
-    } catch (err) {
+    } catch (error) {
       setError('An error occurred while fetching plans');
     } finally {
       setLoading(false);

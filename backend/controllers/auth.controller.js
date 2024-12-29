@@ -6,9 +6,10 @@ import nodemailer from "nodemailer";
 import crypto from "crypto";
 
 
+
 export const registerUser = async (req, res) => {
   try {
-    const { username, email, password, confirmPassword, referredBy } = req.body;
+    const { username, email, password, confirmPassword, referredBy, role } = req.body;
 
     // Input validation
     if (!username || !email || !password || !confirmPassword) {
@@ -30,6 +31,9 @@ export const registerUser = async (req, res) => {
     // Generate unique referral code for new user
     const referralCode = nanoid(10);
 
+    // Set role, default to "user" if not provided
+    const userRole = role && role === "admin" ? "admin" : "user";
+
     // Validate referredBy if provided
     let referredById = null;
     if (referredBy) {
@@ -47,6 +51,7 @@ export const registerUser = async (req, res) => {
         password: hashedPassword,
         referralCode,
         referredBy: referredById,
+        role: userRole, // Set the role
       });
 
       // Save the new user first to get the user ID
@@ -69,6 +74,7 @@ export const registerUser = async (req, res) => {
       email,
       password: hashedPassword,
       referralCode,
+      role: userRole, // Set the role
     });
 
     // Save the new user

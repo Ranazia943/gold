@@ -92,15 +92,16 @@ const Register = () => {
                   placeholder="Referral Code (optional)"
                   className="w-full bg-gray-100 rounded-md py-3 px-4 text-sm outline-blue-600 focus-within:bg-transparent"
                 />
+                
+                <Button variant="contained" type="submit" sx={{ background: "#16a904" }} className="w-full" disabled={loading}>
+                  {loading ? "Submitting..." : "Submit"}
+                </Button>
                 <div className="flex items-center justify-end">
                   <p>If you have an account then</p>
                   <Link to="/login" className="text-[#16a904] ml-2 hover:underline hover:underline-offset-2">
                     Login
                   </Link>
                 </div>
-                <Button variant="contained" type="submit" sx={{ background: "#16a904" }} className="w-full" disabled={loading}>
-                  {loading ? "Submitting..." : "Submit"}
-                </Button>
               </div>
             </form>
           </div>

@@ -162,15 +162,19 @@ export const updateEarnings = async () => {
       const response = await Promise.all(userPlans.map(async (userPlan) => {
         const user = userPlan.userId;
         const plan = userPlan.planId;
-  
+      
+        if (!user) {
+          console.log('No user found for userPlan:', userPlan);
+          return {}; // Skip or handle gracefully
+        }
+      
         // Fetch the user's earnings for this plan
         const userEarnings = await Earnings.findOne({ userId: user._id }) || { totalEarnings: 0, dailyEarnings: [] };
-  
-        // Fetch the referrer details (populate referredBy with username)
+      
+        // Handle potential null for referredBy
         const referrer = user.referredBy ? user.referredBy.username : 'N/A';
         const referrerName = user.referredBy ? user.referredBy.name : 'N/A';  // Assuming the referredBy has a 'name' field
-  
-        // Prepare the response for each user plan, including payment screenshot
+      
         return {
           planRequestDetail: {
             planDetail: {
@@ -201,6 +205,7 @@ export const updateEarnings = async () => {
           }
         };
       }));
+      
   
       // Send the response with all purchased plans data, including payment screenshots and planId
       res.status(200).json({
@@ -213,7 +218,7 @@ export const updateEarnings = async () => {
     }
   };
   
-
+  
 
 export const getReferralDetails = async (req, res) => {
   try {

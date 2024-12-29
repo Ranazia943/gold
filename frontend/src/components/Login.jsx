@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import Button from '@mui/material/Button';
-import CircularProgress from '@mui/material/CircularProgress';
 import useLogin from './Hooks/useLogin';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -56,6 +55,13 @@ const Login = () => {
       {loading ? "Logging In..." : "Submit"}
     </Button>
   </div>
+  <div className="flex items-center justify-end">
+                  <p>If you don't have any account!</p>
+                  <Link to="/register" className="text-[#16a904] ml-2 hover:underline hover:underline-offset-2">
+                    Register
+                  </Link>
+                </div>
+                <Link to="/forgot_password" className="text-[#16a904] ml-2 hover:underline hover:underline-offset-2"><p>Forget Password</p></Link>
 </form>
 
           </div>
