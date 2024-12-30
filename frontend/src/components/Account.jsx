@@ -40,7 +40,7 @@ const Account = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false); // Simulating data load completion after 3 seconds
-    }, 3000);
+    }, 1000);
   }, []);
   const { authUser } = useAuthContext();
   const navigate = useNavigate();
@@ -84,11 +84,11 @@ const Account = () => {
   }, [authUser]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div> <Loading /></div>;
   }
 
   if (!Teamdata) {
-    return <div>Error loading user data.</div>;
+    return <div> <Loading /></div>;
   }
 
   const { user, totalBalance, purchasedPlans } = Teamdata;

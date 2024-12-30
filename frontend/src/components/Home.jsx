@@ -3,7 +3,7 @@ import { useAuthContext } from "../authcontext/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axios from 'axios';
-
+import Loading from "./Loading";
 const Home = () => {
   const { setAuthUser } = useAuthContext();
   const [Teamdata, setTeamData] = useState(null);
@@ -12,6 +12,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null); // Error state
   const { authUser } = useAuthContext();
+  const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -26,7 +27,11 @@ const Home = () => {
       toast.error("An error occurred during logout.");
     }
   };
-
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false); // Simulating data load completion after 3 seconds
+    }, 1000);
+  }, []);
   useEffect(() => {
     if (authUser) {
       const fetchTeamData = async () => {
@@ -127,7 +132,7 @@ const Home = () => {
 
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div><Loading/></div>;
   }
 
   if (error) {
@@ -135,19 +140,24 @@ const Home = () => {
   }
 
   if (!Teamdata) {
-    return <div>Error loading user data.</div>;
+    return <div><Loading/></div>;
   }
 
   const { totalBalance } = Teamdata;
 
   
   return (
+    <div>
+    
+      {isLoading ? (
+        <Loading />
+      ) : (
     <div className="bg-[#f9f9f9] min-h-screen">
       <div className="wrapper">
         <div className="banner relative w-full">
           <img
             src="/images/background.jpg"
-            className="h-[200px] md:h-[300px] object-cover w-full rounded-br-[120px] md:rounded-br-[200px] rounded-bl-[120px] md:rounded-bl-[200px]"
+            className="h-[200px] md:h-[300px] object-cover w-full  "
             alt="Banner"
           />
           <div className="tir shadow-sm rounded-lg md:p-4 p-2">
@@ -221,9 +231,10 @@ const Home = () => {
       
      
          <div className=" max-sm:mx-2">
-         <div className="services max-[400px]:w-full w-[350px] sm:w-[420px]  md:w-[600px] mx-auto mt-28 mb-20">
+         <div className="services max-[400px]:w-full w-[350px] sm:w-[420px] md:w-[600px] mx-auto mt-16 lg:mt-28">
+
                 <h2 className=' md:text-2xl font-[700] text-start ml-6 md:ml-4 my-4'>Our Services Plan</h2>
-                <div className="wrapper grid grid-cols-4 gap-2 md:gap-4 mx-2 md:mx-4 mt-4">
+                <div className="wrapper grid grid-cols-3 gap-2 md:gap-4 mx-2 md:mx-4 mt-4">
                    <Link to="/account">
                    <div data-aos="zoom-in" data-aos-duration="1500" className=" text-center bg-white hover:-translate-y-1 duration-300 border py-2 w-[80px] sm:w-[100px] rounded-lg m-auto mb-4">
                         <img src="/images/account.png" className="sm:w-10 sm:h-10 w-8 h-8 md:w-12 md:h-12 m-auto " alt="" />
@@ -242,10 +253,7 @@ const Home = () => {
                         <p className="text-sm md:text-base font-[400] mt-1">My Palns</p>
                     </div>
                    </Link>
-                   <Link to="/addamount"> <div data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300" className=" text-center bg-white hover:-translate-y-1 duration-300 border py-2 w-[80px] sm:w-[100px] rounded-lg m-auto mb-4">
-                        <img src="/images/checkin.png" className="sm:w-10 sm:h-10 w-8 h-8 md:w-12 md:h-12 m-auto " alt="" />
-                        <p className="text-sm md:text-base font-[400] mt-1">Check-In</p>
-                    </div></Link>
+                  
                   <Link to="/about">
                   <div data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="0" className=" text-center bg-white hover:-translate-y-1 duration-300 border py-2 w-[80px] sm:w-[100px] rounded-lg m-auto mb-4">
                         <img src="/images/about.png" className="sm:w-10 sm:h-10 w-8 h-8 md:w-12 md:h-12 m-auto " alt="" />
@@ -258,10 +266,7 @@ const Home = () => {
                         <p className="text-sm md:text-base font-[400] mt-1">Support</p>
                     </div>
                     </Link>
-                    <div data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="200" className=" text-center bg-white hover:-translate-y-1 duration-300 border py-2 w-[80px] sm:w-[100px] rounded-lg m-auto mb-4">
-                        <img src="/images/app.png" className="sm:w-10 sm:h-10 w-8 h-8 md:w-12 md:h-12 m-auto " alt="" />
-                        <p className="text-sm md:text-base font-[400] mt-1">App</p>
-                    </div>
+                   
 
                     <div
           data-aos="zoom-in"
@@ -286,7 +291,7 @@ const Home = () => {
             </div>
             </div>
          </div>
-         <div className="investment mt-20 mx-4 md:mx-10 lg:mx-16 pb-28">
+         <div className="investment mt-10 mx-4 md:mx-10 lg:mx-16 pb-28">
       <h2 className="text-center my-8 text-3xl font-[600] font-sans">Investment Plans</h2>
       <div className="wrapper grid grid-cols-1 min-[700px]:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
         {plans.map((plan) => (
@@ -329,6 +334,8 @@ const Home = () => {
       </div>
     </div>
         </div>
+    </div>
+      )}
     </div>
   )
 }

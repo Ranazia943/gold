@@ -36,7 +36,7 @@ const Register = () => {
   return (
     <div>
       <Toaster position="top-right" reverseOrder={false} />
-      <div className="wrapper flex mb-28 justify-center items-center min-h-[90vh]">
+      <div className="wrapper flex mb-28 justify-center items-center min-h-[85vh]">
         <div className="font-[sans-serif] max-md:mr-2 max-md:ml-2 max-w-6xl mx-auto relative bg-white shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-3xl overflow-hidden mt-4">
           <div className="absolute -bottom-6 -left-6 w-20 h-20 rounded-full bg-[#16a904]" />
           <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full bg-[#16a904]" />

@@ -15,7 +15,7 @@ router.post("/forgot-password", forgotPassword);
 router.put('/profile/:userId', updateProfile);
 
 // Reset Password route
-router.post("/reset-password", resetPassword);
+router.post("/reset_password", resetPassword);
 // Logout route
 router.post("/logout", logoutUser);
 router.get("/users", getAllUsers);

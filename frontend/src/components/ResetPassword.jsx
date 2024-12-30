@@ -25,7 +25,9 @@ const ResetPassword = () => {
     setErrorMessage('');
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/reset-password`, { resetToken, newPassword });
+      const baseURL = import.meta.env.VITE_API_BASE_URL;
+
+      const response = await axios.post(`${baseURL}/api/auth/reset_password`, { resetToken, newPassword });
       toast.success(response.data.message);
       setSuccessMessage(response.data.message);
     } catch (error) {

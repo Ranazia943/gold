@@ -13,7 +13,7 @@ const Navbar = ({ unreadNotifications }) => {  // Accept unreadNotifications as 
     <div>
       <div className="wrapper z-50 fixed bottom-0 left-0 right-0 bg-white border">
         <nav>
-          <ul className="flex justify-evenly items-center h-[90px]">
+          <ul className="flex justify-evenly items-center h-[70px]">
             <li className="duration-200 hover:text-green-400 hover:-translate-y-1">
               <Link to="/" className="flex flex-col items-center">
                 <i className="fa-solid fa-house text-xl"></i>

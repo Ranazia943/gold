@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const Loading = () => {
+  const [showDollar, setShowDollar] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowDollar(false);
+    }, 1000); // Hide the dollar icon after 1 second
+
+    return () => clearTimeout(timer); // Cleanup the timer
+  }, []);
+
   return (
     <div style={styles.container}>
       <div style={styles.loader}>
-        <div style={styles.dollar}>$</div>
+        {showDollar && <div style={styles.dollar}>$</div>}
       </div>
       <div style={styles.text}>Loading...</div>
     </div>
@@ -29,9 +39,9 @@ const styles = {
   },
   dollar: {
     display: "inline-block",
-    color: "green", // Make the dollar symbol green
-    fontSize: "60px", // Adjust the font size if needed
-    animation: "rotate 2s infinite linear", // Rotate the dollar symbol 360 degrees
+    color: "green",
+    fontSize: "60px",
+    animation: "rotate 2s infinite linear",
   },
   text: {
     fontSize: "20px",

@@ -18,11 +18,11 @@ const Login = () => {
   return (
     <div>
       <Toaster />
-      <div className="wrapper flex mb-28 justify-center items-center min-h-[90vh]">
+      <div className="wrapper flex mb-28 justify-center items-center min-h-[85vh]">
         <div className="font-[sans-serif] max-md:mr-2 max-md:ml-2 max-w-6xl mx-auto relative bg-white shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-3xl overflow-hidden mt-4">
           <div className="absolute -bottom-6 -left-6 w-20 h-20 rounded-full bg-[#16a904]" />
           <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full bg-[#1cc608]" />
-          <div className="grid md:grid-cols-2 place-items-center gap-8 py-8 px-6">
+          <div className="grid md:grid-cols-2 place-items-center gap-6 py-8 px-6">
             <div className="text-center flex flex-col items-center justify-center">
               <img src="/images/min.jpg" className="shrink-0" alt="Logo" />
             </div>
@@ -61,7 +61,7 @@ const Login = () => {
                     Register
                   </Link>
                 </div>
-                <Link to="/forgot_password" className="text-[#16a904] ml-2 hover:underline hover:underline-offset-2"><p>Forget Password</p></Link>
+                <Link to="/forgot_password" className="text-[#16a904] ml-2 hover:underline hover:underline-offset-2"><p className='mb-6'>Forget Password</p></Link>
 </form>
 
           </div>
