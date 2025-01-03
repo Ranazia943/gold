@@ -62,7 +62,7 @@ const App = () => {
     "/admin/dashboard/addplan",
     "/admin/dashboard/updateplan",
     "/admin/dashboard/aboutdetail",
-    "/admin/dashboard/update_about",
+    "/admin/dashboard/support",
     "/admin/dashboard/support",
     "/admin/dashboard/requests",
     "/admin/dashboard/withdraw",
@@ -153,7 +153,7 @@ const App = () => {
             }
           />
           <Route
-            path="/admin/dashboard/update_about"
+            path="/admin/dashboard/support"
             element={
               <ProtectedRoute isAdminRoute={true}>
                 <Update_About />

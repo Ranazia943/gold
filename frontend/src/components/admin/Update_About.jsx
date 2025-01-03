@@ -10,8 +10,8 @@ import WorkIcon from '@mui/icons-material/Work';
 import ForumIcon from '@mui/icons-material/Forum';
 import SportsKabaddiIcon from '@mui/icons-material/SportsKabaddi';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
-import { Button } from '@mui/material';
-import { CurrencyExchange } from '@mui/icons-material';
+import { Button ,Tooltip} from '@mui/material';
+import { CurrencyExchange,Delete } from '@mui/icons-material';
 import { toast } from "react-hot-toast";
 
 const Update_About = () => {
@@ -180,48 +180,48 @@ const Update_About = () => {
             </h2>
           </div>
           <div>
-            <div className="mx-2 md:mx-4">
-              <div className="max-w-4xl mx-auto mt-20 mb-10">
-                {error && (
-                  <p className="text-red-500 text-center">{error}</p>
-                )}
-                <div className="space-y-6">
-                  {tickets.map((ticket) => (
-                    <div
-                      key={ticket._id}
-                      className="w-full rounded-md px-4 text-base text-gray-800 bg-gray-100 py-4 flex justify-between items-center"
-                    >
-                      <div className="w-full">
-                        <p className="text-lg font-semibold">
-                          <span className="font-bold text-gray-700">Name:</span> {ticket.name}
-                        </p>
-                        <p>
-                          <span className="font-bold text-gray-700">Email:</span> {ticket.email}
-                        </p>
-                        <p>
-                          <span className="font-bold text-gray-700">Phone:</span> {ticket.phone}
-                        </p>
-                        <p>
-                          <span className="font-bold text-gray-700">Message:</span> {ticket.message}
-                        </p>
-                      </div>
-                      <Button
-                        variant="contained"
-                        color="error"
-                        onClick={() => handleDelete(ticket._id)}
-                      >
-                        Delete
-                      </Button>
-                    </div>
-                  ))}
-                  {tickets.length === 0 && (
-                    <p className="text-center text-gray-500">
-                      No support tickets available.
-                    </p>
-                  )}
-                </div>
-              </div>
-            </div>
+          <div className="wrapper m-2 md:m-6">
+  <div className="cards mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+    {error && <p className="text-red-500 text-center">{error}</p>}
+
+    {tickets.map((ticket) => (
+      <div
+        key={ticket._id}
+        className="card p-4 border rounded-lg relative hover:-translate-y-2 duration-300 shadow-lg hover:shadow-green-100"
+      >
+        <div className="absolute top-2 right-2 space-x-2">
+          <Tooltip title="Delete Ticket" placement="top">
+            <Button
+              variant="contained"
+              sx={{ background: "#4ade80" }}
+              onClick={() => handleDelete(ticket._id)}
+            >
+              <Delete />
+            </Button>
+          </Tooltip>
+        </div>
+        <p>
+          <span className="text-base md:text-xl font-[600]">Name: </span>
+          <span>{ticket.name}</span>
+        </p>
+        <p>
+          <span className="text-base md:text-xl font-[600]">Email: </span>
+          <span>{ticket.email}</span>
+        </p>
+        <p>
+          <span className="text-base md:text-xl font-[600]">Phone: </span>
+          <span>{ticket.phone}</span>
+        </p>
+        <p className="font-[300] text-base sm:text-lg mt-4">{ticket.message}</p>
+      </div>
+    ))}
+
+    {tickets.length === 0 && (
+      <p className="text-center text-gray-500">No support tickets available.</p>
+    )}
+  </div>
+</div>
+
           </div>
         </div>
       </div>

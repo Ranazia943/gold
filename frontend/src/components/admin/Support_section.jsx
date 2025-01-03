@@ -136,42 +136,7 @@ const Support_section = () => {
        </div>
        <div className="wrapper m-2 md:m-6">
         <div className="cards mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="card p-4 border rounded-lg relative hover:-translate-y-2 duration-300 shadow-lg hover:shadow-green-100">
-            <div className=' absolute top-2 right-2 space-x-2'>
-                <Tooltip title="Delete Question" placement="top">
-            <Button variant='contained' sx={{background:"#4ade80"}}><Delete/></Button>
-          </Tooltip>
-                </div>
-                <p><span className='text-base md:text-xl font-[600]'>Name : </span><span>Ahmad Raza</span></p>
-                <p><span className='text-base md:text-xl font-[600]'>Email : </span><span>ahmad@gmail.com</span></p>
-                <p><span className='text-base md:text-xl font-[600]'>Phone : </span><span>03214569874</span></p>
-
-                <p className=' font-[300] text-base sm:text-lg mt-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus maxime ipsa deleniti exercitationem necessitatibus in nulla tenetur perspiciatis itaque expedita non voluptas velit quia nemo impedit quam doloremque, eius aliquid? Necessitatibus aperiam eaque distinctio amet accusantium. Cumque et culpa dignissimos.</p>
-            </div>
-            <div className="card p-4 border rounded-lg relative hover:-translate-y-2 duration-300 shadow-lg hover:shadow-green-100">
-            <div className=' absolute top-2 right-2 space-x-2'>
-                <Tooltip title="Delete Question" placement="top">
-            <Button variant='contained' sx={{background:"#4ade80"}}><Delete/></Button>
-          </Tooltip>
-                </div>
-                <p><span className='text-base md:text-xl font-[600]'>Name : </span><span>Ahmad Raza</span></p>
-                <p><span className='text-base md:text-xl font-[600]'>Email : </span><span>ahmad@gmail.com</span></p>
-                <p><span className='text-base md:text-xl font-[600]'>Phone : </span><span>03214569874</span></p>
-
-                <p className=' font-[300] text-base sm:text-lg mt-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus maxime ipsa deleniti exercitationem necessitatibus in nulla tenetur perspiciatis itaque expedita non voluptas velit quia nemo impedit quam doloremque, eius aliquid? Necessitatibus aperiam eaque distinctio amet accusantium. Cumque et culpa dignissimos.</p>
-            </div>
-            <div className="card p-4 border relative rounded-lg hover:-translate-y-2 duration-300 shadow-lg hover:shadow-green-100">
-            <div className=' absolute top-2 right-2 space-x-2'>
-                <Tooltip title="Delete Question" placement="top">
-            <Button variant='contained' sx={{background:"#4ade80"}}><Delete/></Button>
-          </Tooltip>
-                </div>
-                <p><span className='text-base md:text-xl font-[600]'>Name : </span><span>Ahmad Raza</span></p>
-                <p><span className='text-base md:text-xl font-[600]'>Email : </span><span>ahmad@gmail.com</span></p>
-                <p><span className='text-base md:text-xl font-[600]'>Phone : </span><span>03214569874</span></p>
-
-                <p className=' font-[300] text-base sm:text-lg mt-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus maxime ipsa deleniti exercitationem necessitatibus in nulla tenetur perspiciatis itaque expedita non voluptas velit quia nemo impedit quam doloremque, eius aliquid? Necessitatibus aperiam eaque distinctio amet accusantium. Cumque et culpa dignissimos.</p>
-            </div>
+           
             <div className="card p-4 border rounded-lg relative hover:-translate-y-2 duration-300 shadow-lg hover:shadow-green-100">
             <div className=' absolute top-2 right-2 space-x-2'>
                 <Tooltip title="Delete Question" placement="top">

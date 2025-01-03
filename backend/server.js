@@ -10,7 +10,9 @@ import withdrawl from "./routes/Withdrawl.routes.js"
 import support from "./routes/support.routes.js"
 import data from "./routes/totaldata.routes.js"
 import bankAccountRoutes from './routes/account.routes.js'
+import './cronJobs.js'; // Import for side effects (no named/default export)
 import dotenv from "dotenv";
+
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;

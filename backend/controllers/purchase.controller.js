@@ -43,6 +43,9 @@ export const purchasePlan = async (req, res) => {
   }
 };
 
+
+// purchase.controller.js
+
 export const updateEarnings = async () => {
   try {
     const activePlans = await UserPlan.find({ state: 'active' });
@@ -50,10 +53,11 @@ export const updateEarnings = async () => {
     for (const plan of activePlans) {
       const now = new Date();
 
-      // Mark plans as completed if their end date has passed
+      // Check if the plan's end date has passed
       if (now > plan.endDate) {
         plan.state = 'completed';
-        await plan.save();
+        await plan.save(); // Mark the plan as completed
+        console.log(`Plan ${plan._id} marked as completed.`);
         continue;
       }
 
@@ -64,7 +68,9 @@ export const updateEarnings = async () => {
         { upsert: true, new: true }
       );
 
-      // Handle referral earnings
+      console.log(`User ${plan.userId} earned ${plan.dailyProfit} from plan ${plan._id}.`);
+
+      // Handle referral earnings (if applicable)
       const referralEarning = await ReferralEarnings.findOne({ referredUserId: plan.userId });
       if (referralEarning) {
         await Earnings.findOneAndUpdate(
@@ -72,12 +78,17 @@ export const updateEarnings = async () => {
           { $inc: { totalEarnings: referralEarning.dailyProfitShare } },
           { upsert: true, new: true }
         );
+
+        console.log(
+          `Referral earnings added: User ${referralEarning.userId} earned ${referralEarning.dailyProfitShare}.`
+        );
       }
     }
   } catch (error) {
     console.error('Error in updateEarnings:', error);
   }
 };
+
 
 
   export const updatePlanState = async (req, res) => {
